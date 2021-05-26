@@ -21,7 +21,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.primaryColor,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         title: Text(
           'Task List',
           style: FlutterFlowTheme.title1.override(
