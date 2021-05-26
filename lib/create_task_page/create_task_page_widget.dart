@@ -55,6 +55,7 @@ class _CreateTaskPageWidgetState extends State<CreateTaskPageWidget> {
               );
 
               await TasksRecord.collection.doc().set(tasksRecordData);
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.save_alt,
