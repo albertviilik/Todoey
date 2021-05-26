@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../create_task_page/create_task_page_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../log_in_screen/log_in_screen_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -55,26 +56,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            ListTile(
-              title: Text(
-                'Log Out',
-                style: FlutterFlowTheme.title3.override(
-                  fontFamily: 'Poppins',
+            InkWell(
+              onTap: () async {
+                await signOut();
+                await Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LogInScreenWidget(),
+                  ),
+                  (r) => false,
+                );
+              },
+              child: ListTile(
+                title: Text(
+                  'Log Out',
+                  style: FlutterFlowTheme.title3.override(
+                    fontFamily: 'Poppins',
+                  ),
                 ),
-              ),
-              subtitle: Text(
-                currentUserEmail,
-                style: FlutterFlowTheme.subtitle2.override(
-                  fontFamily: 'Poppins',
+                subtitle: Text(
+                  currentUserEmail,
+                  style: FlutterFlowTheme.subtitle2.override(
+                    fontFamily: 'Poppins',
+                  ),
                 ),
+                trailing: Icon(
+                  Icons.logout,
+                  color: Color(0xFF303030),
+                  size: 20,
+                ),
+                tileColor: Color(0xFFF5F5F5),
+                dense: false,
               ),
-              trailing: Icon(
-                Icons.logout,
-                color: Color(0xFF303030),
-                size: 20,
-              ),
-              tileColor: Color(0xFFF5F5F5),
-              dense: false,
             )
           ],
         ),
