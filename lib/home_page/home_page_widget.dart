@@ -117,26 +117,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               itemBuilder: (context, listViewIndex) {
                 final listViewTasksRecord =
                     listViewTasksRecordList[listViewIndex];
-                return ListTile(
-                  title: Text(
-                    listViewTasksRecord.description,
-                    style: FlutterFlowTheme.title3.override(
-                      fontFamily: 'Poppins',
+                return InkWell(
+                  onLongPress: () async {
+                    await listViewTasksRecord.reference.delete();
+                  },
+                  child: ListTile(
+                    title: Text(
+                      listViewTasksRecord.description,
+                      style: FlutterFlowTheme.title3.override(
+                        fontFamily: 'Poppins',
+                      ),
                     ),
-                  ),
-                  subtitle: Text(
-                    listViewTasksRecord.dueDate.toString(),
-                    style: FlutterFlowTheme.subtitle2.override(
-                      fontFamily: 'Poppins',
+                    subtitle: Text(
+                      listViewTasksRecord.dueDate.toString(),
+                      style: FlutterFlowTheme.subtitle2.override(
+                        fontFamily: 'Poppins',
+                      ),
                     ),
+                    tileColor: Color(0xFFF5F5F5),
+                    dense: false,
                   ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Color(0xFF303030),
-                    size: 20,
-                  ),
-                  tileColor: Color(0xFFF5F5F5),
-                  dense: false,
                 );
               },
             );
