@@ -94,7 +94,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ),
       body: SafeArea(
         child: StreamBuilder<List<TasksRecord>>(
-          stream: queryTasksRecord(),
+          stream: queryTasksRecord(
+            queryBuilder: (tasksRecord) =>
+                tasksRecord.where('owner', isEqualTo: currentUserUid),
+          ),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
